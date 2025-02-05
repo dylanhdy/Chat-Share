@@ -6,9 +6,6 @@ from utils.tools import *
 
 
 
-
-
-
 # GPT 主页路由
 @app.route('/chatgpt', methods=['GET', 'POST'])
 @admin_required

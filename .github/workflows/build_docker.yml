@@ -12,8 +12,8 @@ on:
   workflow_dispatch:
 
 env:
-  REGISTRY: ghcr.io
-  IMAGE: h88782481/chat-share
+  REGISTRY: crpi-tyce9o8tisqe9vrd.cn-shanghai.personal.cr.aliyuncs.com
+  IMAGE: crazy_david/chat-share
 
 jobs:
   main:
@@ -54,8 +54,8 @@ jobs:
         uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
 
       # 根据输入自动生成 tag 和 label 等数据，说明见下
       - name: Extract metadata for Docker
