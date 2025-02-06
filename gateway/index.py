@@ -7,7 +7,6 @@ from utils.tools import *
 
 # 主页路由
 @app.route('/')
-@login_required
 def index():
     
     if session.get('logged_in'):
