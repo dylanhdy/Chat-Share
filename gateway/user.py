@@ -6,18 +6,10 @@ from utils.globals import *
 from utils.tools import *
 from werkzeug.security import generate_password_hash
 
-
-
-
-
-
-
 @app.route('/user')
 @admin_required
 def user_management():
     return render_template('user_management.html')
-
-
 
 # 获取所有用户
 @app.route('/api/users', methods=['GET'])

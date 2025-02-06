@@ -3,8 +3,9 @@ from flask import render_template, request, redirect, url_for, session, flash
 import utils.globals as globals
 from utils.globals import *
 from utils.tools import *
-from werkzeug.security import check_password_hash
+from werkzeug.security import check_password_hash, generate_password_hash
 from gateway.index import *
+import uuid
 
 
 # 登录页面
@@ -68,3 +69,32 @@ def auth():
             flash('用户名或密码错误，请重试。', 'error')
             
     return render_template('auth.html')
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        username = request.form['email']
+        password = request.form['password']
+        
+        # 检查用户名是否已存在
+        if any(user['username'] == username for user in globals.users):
+            flash('用户名已存在。', 'error')
+        
+        new_user = {
+            'id': str(uuid.uuid4()),
+            'username': username,
+            'password': generate_password_hash(password),
+            'role': 'user',
+            'bind_token': '',
+            'bind_email': '',
+            'expiration_time': '',
+            'bind_claude_token': '',
+            'bind_claude_email': '',
+            'claude_expiration_time': ''
+        }
+        
+        globals.users.append(new_user)
+        save_users(globals.users)
+        return redirect(url_for('login'))
+            
+    return render_template('register.html')

@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<!-- saved from url=(0032)https://rawchat.cn/register.html -->
+<html lang="zh-CN"></html>
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <!-- <link rel="manifest" href="/resources/manifest.json" /> -->
-  <link rel="preconnect" href="https://rawchat.cn/">
-  <link rel="apple-touch-icon" sizes="180x180" href="https://rawchat.cn/resources/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="https://rawchat.cn/resources/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="https://rawchat.cn/resources/favicon-16x16.png">
-  <link rel="stylesheet" href="./register_files/main.cdn.min.css">
-  <link rel="stylesheet" href="./register_files/sweetalert2.min.css">
-  <script src="./register_files/sweetalert2.min.js"></script>
+  <!-- <link rel="preconnect" href="https://rawchat.cn/"> -->
+  <!-- <link rel="apple-touch-icon" sizes="180x180" href="https://rawchat.cn/resources/apple-touch-icon.png"> -->
+  <!-- <link rel="icon" type="image/png" sizes="32x32" href="https://rawchat.cn/resources/favicon-32x32.png"> -->
+  <!-- <link rel="icon" type="image/png" sizes="16x16" href="https://rawchat.cn/resources/favicon-16x16.png"> -->
+  <!-- <link rel="stylesheet" href="./register_files/main.cdn.min.css"> -->
+  <!-- <link rel="stylesheet" href="./register_files/sweetalert2.min.css"> -->
+  <!-- <script src="./register_files/sweetalert2.min.js"></script> -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.cdn.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='sweetalert2.min.css') }}">
+  <script src="{{ url_for('static', filename='sweetalert2.min.js') }}"></script>
   <style id="custom-styles-container">
     body {
       background: #fff;
@@ -239,23 +242,29 @@
                   "></div>
               <h1 class="ca61186d8 cb87ac8dc">Create your account</h1>
               <div class="cc6691322 ccd3868ad"></div>
-              <div class="c36265ff2 c0b5be96d">
+              <!-- <div class="c36265ff2 c0b5be96d">
                 <p class="c6aeb1ef4 ca1b8f6f9">注册 OpenAI 以继续使用 Apps Client。</p>
-              </div>
+              </div> -->
             </header>
             <div class="cd073cc55 c3057e255">
               <form method="POST" class="c15ce5740 _form-login-password" data-form-primary="true">
                 <div class="ce7821f58 c9ee3d098">
                   <div class="c83779892">
                     <div class="input-wrapper _input-wrapper">
-                      <div class="c51fadc8b c7cc0d651 text c183d9a0a c85b18936 c819d1bdd" data-action-text="" data-alternate-action-text="">
+                      <!-- <div class="c51fadc8b c7cc0d651 text c183d9a0a c85b18936 c819d1bdd" data-action-text="" data-alternate-action-text="">
                         <label class="c41b9071b no-js c6e062879 cd80352de" for="email">电子邮件地址</label><input class="input cdb43277e c07239cfd cca61e7fa" style="border-radius: 7px" inputmode="email" name="email" id="email" type="text" value="" required="" autocomplete="email" autocapitalize="none" spellcheck="false" autofocus="">
                         <div class="c41b9071b js-required c6e062879 cd80352de" data-dynamic-label-for="email" aria-hidden="true">
                           电子邮件地址
                         </div>
+                      </div> -->
+                      <div class="c51fadc8b c7cc0d651 text c183d9a0a c85b18936 c819d1bdd" data-action-text="" data-alternate-action-text="">
+                        <label class="c41b9071b no-js c6e062879 cd80352de" for="email">用户名</label><input class="input cdb43277e c07239cfd cca61e7fa" style="border-radius: 7px" inputmode="email" name="email" id="email" type="text" value="" required="" autocomplete="email" autocapitalize="none" spellcheck="false" autofocus="">
+                        <div class="c41b9071b js-required c6e062879 cd80352de" data-dynamic-label-for="email" aria-hidden="true">
+                          用户名
+                        </div>
                       </div>
                     </div>
-                    <div class="cc336b8c1">
+                    <!-- <div class="cc336b8c1">
                       <button type="button" id="sendCodeBtn" style="border-radius: 7px;margin-bottom: 20px;margin-top: 0px;" class="c994ae14c c2fd8f218 ca2dc35c7 c0c7f649b">
                         发送验证码
                       </button>
@@ -267,7 +276,7 @@
                           邮箱验证码
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                     <div class="input-wrapper _input-wrapper">
                       <div class="c51fadc8b c7cc0d651 password c9378f091 c85b18936" style="border-radius: 7px" data-action-text="" data-alternate-action-text="">
                         <label class="c41b9071b no-js c6e062879 c3c2bcd98" for="password">密码</label><input class="input cdb43277e c94bb61d1 cca61e7fa" style="border-radius: 7px" name="password" id="password" type="password" required="" autocomplete="current-password" autocapitalize="none" spellcheck="false" autofocus="">
@@ -279,7 +288,8 @@
                         </button>
                       </div>
                     </div>
-                    <div class="input-wrapper _input-wrapper">
+
+                    <!-- <div class="input-wrapper _input-wrapper">
                       <div class="c51fadc8b c7cc0d651 text c183d9a0a c85b18936" data-action-text="" data-alternate-action-text="">
                         <label class="c41b9071b no-js c6e062879 cd80352de" for="referrer_code">邀请码（非必填）</label><input class="input cdb43277e c07239cfd cca61e7fa" style="border-radius: 7px" inputmode="email" name="referrer_code" id="referrer_code" type="text" value="">
                         <div class="c41b9071b js-required c6e062879 cd80352de" data-dynamic-label-for="referrer_code" aria-hidden="true">
@@ -294,30 +304,10 @@
                           请问您是从哪里知道本站的？
                         </div>
                       </div>
-                    </div>
+                    </div> -->
 
                     <div class="input-wrapper _input-wrapper">
                       <div class="c51fadc8b c7cc0d651 text c183d9a0a c3ab3f08e c666327b8 c85b18936" data-action-text="" data-alternate-action-text="">
-                        <!-- <label
-                                                  class="c41b9071b no-js c6e062879 cd80352de"
-                                                  for="mfa_code"
-                                                  >MFA Code</label
-                                                ><input
-                                                  class="input cdb43277e c07239cfd cca61e7fa c224a8982 c08661137"
-                                                  style="border-radius: 7px"
-                                                  name="mfa_code"
-                                                  type="text"
-                                                  autocapitalize="none"
-                                                  spellcheck="false"
-                                                  placeholder="Optional"
-                                                />
-                                                <div
-                                                  class="c41b9071b js-required c6e062879 cd80352de"
-                                                  data-dynamic-label-for="mfa_code"
-                                                  aria-hidden="true"
-                                                >
-                                                  MFA Code
-                                                </div> -->
                       </div>
 
                     </div>
@@ -336,7 +326,22 @@
                   </button>
                 </div>
               </form>
-              <div class="c11767592 c16884ee3"><span>Or</span></div>
+              
+              <!-- 处理 Flash 消息 -->
+              {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                  {% for category, message in messages %}
+                    <script>
+                      Swal.fire({
+                          icon: 'error',
+                          text: '{{ message }}',
+                          heightAuto: false
+                      });
+                    </script>
+                  {% endfor %}
+                {% endif %}
+              {% endwith %}
+              <!-- <div class="c11767592 c16884ee3"><span>Or</span></div> -->
               <!-- <div class="c497a10c6 c87650a4b">
                 <form method="post" data-provider="windowslive" class="cada38124 c856cfac0 c45d84291"
                   data-form-secondary="true">
@@ -869,7 +874,7 @@
     <footer class="oai-footer"></footer>
   </div>
 
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
     // 发送验证码按钮
     var btn = document.getElementById('sendCodeBtn');
     btn.onclick = function () {
@@ -941,21 +946,6 @@
           }
         })
     };
-
-    //自动填写邀请码
-    document.addEventListener('DOMContentLoaded', function () {
-      const urlParams = new URLSearchParams(window.location.search);
-      const referrerCode = urlParams.get('referrer_code');
-      const referrerInput = document.getElementById('referrer_code');
-
-      if (referrerCode) {
-        referrerInput.value = referrerCode;
-        referrerInput.disabled = true;
-        referrerInput.style.cursor = 'not-allowed';
-      }
-    });
-  </script>
-
-
+  </script> -->
 
 </body></html>
