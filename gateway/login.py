@@ -6,6 +6,7 @@ from utils.tools import *
 from werkzeug.security import check_password_hash, generate_password_hash
 from gateway.index import *
 import uuid
+import random
 
 
 # 登录页面
@@ -52,6 +53,7 @@ def register():
         # 检查用户名是否已存在
         if any(user['username'] == username for user in globals.users):
             flash('用户名已存在。', 'error')
+            return redirect(url_for('register'))
         
         new_user = {
             'id': str(uuid.uuid4()),
@@ -67,7 +69,22 @@ def register():
         }
         
         globals.users.append(new_user)
-        save_users(globals.users)
+
+        user_index = next((i for i, user in enumerate(globals.users) if user['username'] == username), None)
+        filtered_tokens = [token for token in globals.chatToken if not token['PLUS']]
+        if not filtered_tokens:
+            flash('gpt账号不足，请联系管理员。', 'error')
+            return redirect(url_for('register'))
+        token = random.choice(filtered_tokens)
+        res = set_seedmap(new_user["id"], token['access_token'])
+        if res == 200:
+            globals.users[user_index]['bind_email'] = token['email']
+            globals.users[user_index]['bind_token'] = token['access_token']
+            save_users(globals.users)
+            flash('账号绑定成功。', 'success')
+        else:
+            flash('账号绑定失败。', 'error')
+
         return redirect(url_for('login'))
             
     return render_template('register.html')
