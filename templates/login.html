@@ -264,9 +264,10 @@
                   {% for category, message in messages %}
                     <script>
                       Swal.fire({
-                          icon: 'error',
+                          icon: '{{ category }}',
                           text: '{{ message }}',
-                          heightAuto: false
+                          heightAuto: false,
+                          confirmButtonColor: '#10a37f'
                       });
                     </script>
                   {% endfor %}

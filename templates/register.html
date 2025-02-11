@@ -250,16 +250,10 @@
                 <div class="ce7821f58 c9ee3d098">
                   <div class="c83779892">
                     <div class="input-wrapper _input-wrapper">
-                      <!-- <div class="c51fadc8b c7cc0d651 text c183d9a0a c85b18936 c819d1bdd" data-action-text="" data-alternate-action-text="">
-                        <label class="c41b9071b no-js c6e062879 cd80352de" for="email">电子邮件地址</label><input class="input cdb43277e c07239cfd cca61e7fa" style="border-radius: 7px" inputmode="email" name="email" id="email" type="text" value="" required="" autocomplete="email" autocapitalize="none" spellcheck="false" autofocus="">
-                        <div class="c41b9071b js-required c6e062879 cd80352de" data-dynamic-label-for="email" aria-hidden="true">
-                          电子邮件地址
-                        </div>
-                      </div> -->
                       <div class="c51fadc8b c7cc0d651 text c183d9a0a c85b18936 c819d1bdd" data-action-text="" data-alternate-action-text="">
-                        <label class="c41b9071b no-js c6e062879 cd80352de" for="email">用户名</label><input class="input cdb43277e c07239cfd cca61e7fa" style="border-radius: 7px" inputmode="email" name="email" id="email" type="text" value="" required="" autocomplete="email" autocapitalize="none" spellcheck="false" autofocus="">
-                        <div class="c41b9071b js-required c6e062879 cd80352de" data-dynamic-label-for="email" aria-hidden="true">
-                          用户名
+                        <label class="c41b9071b no-js c6e062879 cd80352de" for="username">电子邮件地址</label><input class="input cdb43277e c07239cfd cca61e7fa" style="border-radius: 7px" inputmode="email" name="username" id="username" type="text" value="" required="" autocomplete="username" autocapitalize="none" spellcheck="false" autofocus="">
+                        <div class="c41b9071b js-required c6e062879 cd80352de" data-dynamic-label-for="username" aria-hidden="true">
+                          电子邮件地址
                         </div>
                       </div>
                     </div>
@@ -332,9 +326,10 @@
                   {% for category, message in messages %}
                     <script>
                       Swal.fire({
-                          icon: 'error',
+                          icon: '{{ category }}',
                           text: '{{ message }}',
-                          heightAuto: false
+                          heightAuto: false,
+                          confirmButtonColor: '#10a37f'
                       });
                     </script>
                   {% endfor %}

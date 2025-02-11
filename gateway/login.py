@@ -47,7 +47,7 @@ def logout():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        username = request.form['email']
+        username = request.form['username']
         password = request.form['password']
         
         # 检查用户名是否已存在
@@ -67,24 +67,22 @@ def register():
             'bind_claude_email': '',
             'claude_expiration_time': ''
         }
-        
-        globals.users.append(new_user)
 
-        user_index = next((i for i, user in enumerate(globals.users) if user['username'] == username), None)
-        filtered_tokens = [token for token in globals.chatToken if not token['PLUS']]
+        filtered_tokens = [token for token in globals.chatToken if token['PLUS'] == "false"]
         if not filtered_tokens:
             flash('gpt账号不足，请联系管理员。', 'error')
             return redirect(url_for('register'))
         token = random.choice(filtered_tokens)
         res = set_seedmap(new_user["id"], token['access_token'])
         if res == 200:
-            globals.users[user_index]['bind_email'] = token['email']
-            globals.users[user_index]['bind_token'] = token['access_token']
+            new_user['bind_email'] = token['email']
+            new_user['bind_token'] = token['access_token']
+            globals.users.append(new_user)
             save_users(globals.users)
             flash('账号绑定成功。', 'success')
+            return redirect(url_for('login'))
         else:
             flash('账号绑定失败。', 'error')
-
-        return redirect(url_for('login'))
+            return redirect(url_for('register'))
             
     return render_template('register.html')
